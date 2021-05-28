@@ -14,7 +14,20 @@
 <title>Football Mainpage</title>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-
+function check_input() {
+	var tmpPlayerName = document.getElementById("tradeplayername").value;
+	var tmpPreteam = document.getElementById("preteam").value;
+	
+	if (tmpPlayerName==""||isNaN(tmpPlayerName)==false) {
+		alert("선수 이름을 다시 입력하여 주십시오.");
+		return false;
+	} else if (tmpPreteam==''||isNaN(tmpPreteam)==false) {
+		alert("이전 구단명을 다시 입력하여 주십시오.");
+		return false;
+	} else {
+		return true;
+	}
+}
 
 $(document).ready(function() {
     $('.previous').click(function() {
@@ -234,7 +247,7 @@ body {
 		<div style="width: 680px; height:90%; position:relative; background-color: rgba(189, 189, 189, 0.8); overflow:auto;">
 			<table>
 				<tbody>
-					<form action="8_3_1_Inserttrade2.jsp" method="post">
+					<form action="8_3_1_Inserttrade2.jsp" method="post" onsubmit="return check_input();">
 						<tr>
 							<td><p><label>PLAYER NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 							<input type="text" id="tradeplayername" name="tradeplayername" value="" style="width:150px;" autofocus></td>
